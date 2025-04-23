@@ -1,0 +1,19 @@
+name: HTML Validation
+
+on:
+    push:
+        branches:
+            - main # Run on push to main branch
+
+jobs:
+    validate-html:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Sjekker ut koden
+              uses: actions/checkout@v3
+
+            - name: Installer HTML-validator
+              run: npm install -g html-validator-cli
+
+            - name: Validerer HTML-filen
+              run: html-validator --file=index.html --verbose
